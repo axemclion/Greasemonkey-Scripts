@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!-- ====================================================================== 
+     Apr 11, 2007 12:50:56 PM                                                        
+
+     SignOnManager    
+     Creates the SignOnManager Scrip
+                   
+     pnarasimhan                                                                
+     ====================================================================== -->
+<project name="SignOnManager" default="compile">
+    <description>
+            Creates the Twitter Meebo Integration
+    </description>
+
+	<property name="dest.file" value="twittermeebo.user.js"/>
+	<property name="util.dir"  value="${basedir}/../util" />
+	
+    <!-- ================================= 
+          target: compile              
+         ================================= -->
+    <target name="compile" description="--> Creates the Meebo Script">
+		<echo>Creating meebo File</echo>
+    	<concat destfile="${dest.file}" fixlastline="true">
+    		<path>
+				<pathelement location="${basedir}/include.js"/>
+    			<pathelement location="${util.dir}/Logger.js"/>
+    			<pathelement location="${basedir}/TwitterMeebo.js"/>
+    		</path>
+    	</concat>
+    </target>
+</project>

@@ -1,0 +1,1 @@
+﻿{"twords": [{"optmap": {"एह": ["ए", "", "ह"]}, "word": true, "options": ["एह"]}], "itrans": "येह", "inString": "yeh"}

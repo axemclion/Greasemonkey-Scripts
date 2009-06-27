@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!-- ====================================================================== 
+     Apr 11, 2007 12:50:56 PM                                                        
+
+     SignOnManager    
+     Creates the SignOnManager Scrip
+                   
+     pnarasimhan                                                                
+     ====================================================================== -->
+<project name="quiller" default="deploy">
+    <description>
+            Creates the quiller Script
+    </description>
+
+	<property name="dest.file" value="quiller.user.js"/>
+	<property name="util.dir"  value="${basedir}/../util" />
+	<property name="tomcat.dir" value="C:\Program Files\Apache Software Foundation\Tomcat 5.5\webapps\sample\GMScripts\quil"/>
+
+	
+    <!-- ================================= 
+          target: compile              
+         ================================= -->
+    <target name="compile" description="--> Creates the SignOnManager Script">
+		<echo>Creating GreaseMonkey Script File</echo>
+    	<concat destfile="${dest.file}" fixlastline="true">
+    		<path>
+				<pathelement location="${basedir}/include.js"/>
+    			<pathelement location="${util.dir}/Logger.js"/>
+    			<pathelement location="${util.dir}/simpleDrag.js"/>
+    			<pathelement location="${basedir}/ConfigManager.js"/>
+    			<pathelement location="${basedir}/FormHandler.js"/>
+    			<pathelement location="${basedir}/Transformer.js"/>    			
+    		</path>
+    	</concat>
+    </target>
+	
+	<!-- ================================= 
+          target: deploy              
+         ================================= -->
+    <target name="deploy" depends="compile" description="--> Deploys the GM script inside the GM Simulator and a page">
+        <copy todir="${tomcat.dir}" verbose="true">
+        	<fileset dir="${util.dir}">
+        		<include name = "*.js"/>
+        	</fileset>
+        	<fileset dir="${basedir}">
+        		<include name = "*.*"/>
+           		<exclude name = "build.xml"/>
+        	</fileset>
+    	</copy>
+    </target>
+
+	<target name = "clean">
+		<delete dir="${tomcat.dir}">
+			
+		</delete>
+	</target>
+</project>

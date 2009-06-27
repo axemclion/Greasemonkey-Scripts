@@ -1,0 +1,69 @@
+<HTML>
+	<HEAD>
+		<TITLE>
+			Quil Transliteration Test Page
+		</TITLE>
+		<SCRIPT>
+			function showURLLink()
+			{
+				document.getElementById("urlTextBox").value = document.URL;
+			}
+		
+		</SCRIPT>
+	</HEAD>
+	<BODY onload="showURLLink()">
+		<H1> 
+			Welcome to the Quil Test test Page. 
+		</H1>
+		
+		<HR>
+		Page Url : <INPUT type="text" value="" id = "urlTextBox" size="55">
+		<A href="javascript:gotoPage()">Go</A>
+		
+		<HR>
+		<DIV>
+			Test Result : [ <DIV id = "testResultBox" style="display: inline;">...</DIV>]
+		</DIV>
+
+		<DIV style="border: 3px solid #66CC00; padding: 10px; background-color: #E8FBD3; font-family: verdana; font-size: 12px">
+			<form action="">
+				<textarea id= "targetBox" rows="7" cols="50"></textarea>
+			</form>
+		</DIV>	
+	</BODY>	
+	
+	<SCRIPT type="text/javascript" src="GMsimulator.js"></SCRIPT>
+
+	<SCRIPT type = "text/javascript" src = "include.js"></SCRIPT>
+	<SCRIPT type = "text/javascript" src = "Logger.js"></SCRIPT>
+	<Script type = "text/javascript">Logger.logOnFirebug = false; </SCript>
+	<SCRIPT type = "text/javascript" src = "simpleDrag.js"></SCRIPT>	
+	<SCRIPT type = "text/javascript" src = "ConfigManager.js"></SCRIPT>
+	<SCRIPT type = "text/javascript" src = "Transformer.js"></SCRIPT>
+	<SCRIPT type = "text/javascript" src = "FormHandler.js"></SCRIPT>
+	<SCRIPT type="text/javascript">
+		
+		window.setInterval(testTransliteration, 3000);
+	
+		function testTransliteration()
+		{
+			var translatedText = document.getElementById("targetBox");
+			var sourceText = document.getElementById("_gmscript_quill_box_text");
+			var resultBox = document.getElementById("testResultBox");
+			
+			if (translatedText != null && sourceText != null)
+			{
+				if (translatedText.value == sourceText.value.toUpperCase())
+				{
+					resultBox.innerHTML = "<font color = '#00AA00'>PASSED</font>";
+				}
+				else 
+				{
+					resultBox.innerHTML = "<font color = '#AA0000'>FAILED</font>";
+				}
+				
+			}
+		}
+	</SCRIPT>
+
+</HTML>

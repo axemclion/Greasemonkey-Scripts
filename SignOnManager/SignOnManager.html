@@ -1,0 +1,102 @@
+<HTML>
+	<HEAD>
+		<SCRIPT type="text/javascript">
+			function login()
+			{
+				return confirm('Wanna submit this form \nusing the JAVASCRIPT link?? ');
+			}
+			
+			function showURLLink()
+			{
+				document.getElementById("urlTextBox").value = document.URL;
+			}
+			
+			function gotoPage()
+			{
+				document.location = document.getElementById("urlTextBox").value;
+			}
+		</SCRIPT>
+
+		<TITLE>
+			Sign On Manager Test page
+		</TITLE>
+	</HEAD>
+	<BODY onload="showURLLink()">
+		<H1> 
+			Welcome to the Sign On Manager test Page. 
+		</H1>
+		
+		<HR>
+		Page Url : <INPUT type="text" value="" id = "urlTextBox" size="55">
+		<A href="javascript:gotoPage()">Go</A>
+		
+		<HR>
+
+		<DIV style="float: right ; border: 3px solid #66CC00; padding: 10px; background-color: #E8FBD3; font-family: verdana; font-size: 12px">
+
+
+<form onsubmit="return login(this)" method="post">
+    <input name="url" value="/" type="hidden">
+    <input name="op" value="login" type="hidden">
+    <div class="loginform">
+    <p>username:</p>
+    <p><input name="user" maxlength="20" type="text" value = "axe"> </p>
+
+    <p>password:</p>
+    <p><input name="passwd" maxlength="20" type="password" value = "axe"></p>
+    <p class="error">
+    </p>
+    <p><input value="on" id="remlogin" name="rem" type="checkbox"><label for="remlogin">remember me</label></p>
+    <p><button value="" class="btn" type="submit">login</button></p>
+    </div>
+</form>
+
+
+		</DIV>
+		<DIV style="width:  60%; float: left ;border-right: 1px solid; padding: 10px;">
+			<H3>
+				Information
+			</H3>
+			<P>
+			SignOn Manager lets you log in to websites automatically. It works both with 
+			<code> Form Submit </code> and <code> Javascript </code> links
+			This page is a demonstration of how the Sign On Manager Works. This page uses 
+			a script to simulate Firefox GreaseMonkey Plugin.
+			</P>
+			
+			<P>
+			Steps to use the Script Demo
+			<OL>
+				<LI>Enter any user name password in the form to the right</LI>
+				<LI>Before hitting the submit button, click the <code>SignOn</code> button in brown Div at the top center</LI>
+				<LI>The next time you access this page, username/password is entered and form submitted </LI>
+			</OL>
+			</P>
+			<P>
+				You can also use the GMSimulator window to see the various values stored in the <code>about:conig</code>
+				<br>The TOOLS > GreaseMonkey > UserScripts Menu is also shown in the Simulator. 
+				<br>The two menus for Sign On Manger are 
+				<ol>
+					<li><code> Configure Sign On Manager </code></li>
+					<li><code> Start Sign On Manager </code></li>
+				</ol>
+			</P>
+		</DIV>
+		
+	</BODY>	
+	
+	<SCRIPT type="text/javascript" src="GMsimulator.js"></SCRIPT>
+
+	<SCRIPT type = "text/javascript" src = "include.js"></SCRIPT>
+	<SCRIPT type = "text/javascript" src = "Logger.js"></SCRIPT>
+	<Script type = "text/javascript">Logger.logOnFirebug = false; </SCript>
+	<SCRIPT type = "text/javascript" src = "simpleDrag.js"></SCRIPT>	
+	<SCRIPT type = "text/javascript" src = "PersistanceManager.js"></SCRIPT>    			
+	<SCRIPT type = "text/javascript" src = "DataObject.js"></SCRIPT>
+	<SCRIPT type = "text/javascript" src = "Dialog.js"></SCRIPT>
+	<SCRIPT type = "text/javascript" src = "Configurator.js"></SCRIPT>	
+	<SCRIPT type = "text/javascript" src = "FormManager.js"></SCRIPT>
+	<SCRIPT type = "text/javascript" src = "SignOnManager.js"></SCRIPT>
+
+
+</HTML>

@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!-- ====================================================================== 
+     Apr 11, 2007 12:50:56 PM                                                        
+
+     SignOnManager    
+     Creates the SignOnManager Scrip
+                   
+     pnarasimhan                                                                
+     ====================================================================== -->
+<project name="SignOnManager" default="deploy">
+    <description>
+            Creates the SignOnManager Scrip
+    </description>
+
+	<property name="dest.file" value="SignOnManager.user.js"/>
+	<property name="util.dir"  value="${basedir}/../util" />
+	<property name="tomcat.dir" value="C:\Program Files\Apache Software Foundation\Tomcat 6.0\webapps\sample\GMScripts/SignOnManager"/>
+
+	
+    <!-- ================================= 
+          target: compile              
+         ================================= -->
+    <target name="compile" description="--> Creates the SignOnManager Script">
+		<echo>Creating SignOnManager File</echo>
+    	<concat destfile="${dest.file}" fixlastline="true">
+    		<path>
+				<pathelement location="${basedir}/include.js"/>
+    			<pathelement location="${util.dir}/Logger.js"/>
+    			<pathelement location="${util.dir}/simpleDrag.js"/>
+				<pathelement location="${util.dir}/PersistanceManager.js"/>    			
+    			<pathelement location="${basedir}/DataObject.js"/>
+    			<pathelement location="${basedir}/Dialog.js"/>
+    			<pathelement location="${basedir}/Configurator.js"/>
+    			<pathelement location="${basedir}/FormManager.js"/>
+    			<pathelement location="${basedir}/SignOnManager.js"/>    			
+    		</path>
+    	</concat>
+    </target>
+	
+	<!-- ================================= 
+          target: deploy              
+         ================================= -->
+    <target name="deploy" depends="compile" description="--> Deploys the GM script inside the GM Simulator and a page">
+        <copy todir="${tomcat.dir}" verbose="true">
+        	<fileset dir="${util.dir}">
+        		<include name = "*.js"/>
+        	</fileset>
+        	<fileset dir="${basedir}">
+        		<include name = "*.html"/>
+        		<include name = "*.js"/>
+        	</fileset>
+    	</copy>
+    </target>
+
+	<target name = "clean">
+		<delete dir="${tomcat.dir}">
+			
+		</delete>
+	</target>
+</project>
