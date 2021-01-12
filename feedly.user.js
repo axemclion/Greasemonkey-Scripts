@@ -16,7 +16,7 @@
   var background_key = 72;
 
 	var open_entry = function() {
-		var cur = document.querySelector('.selected .title');
+		var cur =  document.querySelector('.inlineFrame--selected a');
 		if (cur) {
     	console.log("FeedlyOpenEntryInBackgroundTab: GM_openInTab now " + cur.href);
 			GM.openInTab(cur.href, true);
